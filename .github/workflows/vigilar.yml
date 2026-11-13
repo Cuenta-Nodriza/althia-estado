@@ -1,0 +1,38 @@
+# Va en .github/workflows/vigilar.yml del repositorio público althia-estado.
+name: Vigilar Althia
+on:
+  schedule:
+    - cron: '*/5 * * * *'
+  workflow_dispatch:
+permissions:
+  contents: write
+  issues: write
+concurrency:
+  group: vigilar
+  cancel-in-progress: false
+jobs:
+  vigilar:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - id: vigilar
+        run: node vigilar.mjs
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          # Opcional: el canal del teléfono (lo enseña el panel en Avisos → Teléfono). Sin él, solo issues.
+          NTFY_TEMA: ${{ secrets.NTFY_TEMA }}
+          # La dirección de salud del panel (https://…/api/panel/salud). Es secreto para que el repositorio público no la muestre.
+          PANEL_SALUD_URL: ${{ secrets.PANEL_SALUD_URL }}
+          # La dirección del vigilante de cada minuto (Worker de Cloudflare, #P32): si está vivo, el teléfono lo avisa él.
+          VIGILANTE_CF_URL: ${{ secrets.VIGILANTE_CF_URL }}
+      - if: steps.vigilar.outputs.guardar == '1'
+        run: |
+          git config user.name "althia-estado"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add estado.json README.md
+          git commit -m "Estado $(date -u +%Y-%m-%dT%H:%MZ)" || exit 0
+          git push
