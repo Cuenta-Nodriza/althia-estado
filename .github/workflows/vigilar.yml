@@ -2,7 +2,9 @@
 name: Vigilar Althia
 on:
   schedule:
-    - cron: '*/5 * * * *'
+    # Cada 5 min, en los minutos 3, 8, 13… (fuera de la punta de :00 de GitHub). 14-11: se cambió para que GitHub
+    # registrara el horario (en un repositorio nuevo no lo había hecho).
+    - cron: '3-59/5 * * * *'
   workflow_dispatch:
 permissions:
   contents: write
