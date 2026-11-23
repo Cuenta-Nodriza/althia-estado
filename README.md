@@ -1,16 +1,16 @@
 # Estado de Althia
 
-Vigilancia externa cada 5 minutos (GitHub Actions). Hora de Santo Domingo. Última revisión: 2026-11-23 10:03.
+Vigilancia externa cada 5 minutos (GitHub Actions). Hora de Santo Domingo. Última revisión: 2026-11-23 11:03.
 
 | Servicio | Estado | Último tiempo de respuesta |
 |---|---|---|
-| Web (althiaedu.com) | 🟢 funciona | 161 ms |
-| App: servidor de producción | 🟢 funciona | 107 ms |
-| App: pantalla de entrada | 🟢 funciona | 125 ms |
-| althia-edu.com (redirige) | 🟢 funciona | 175 ms |
-| Panel del dueño | 🟢 funciona | 192 ms |
-| Revisión programada del panel | 🟢 funciona | 198 ms |
-| Vigilante de cada minuto (Cloudflare) | 🟢 funciona | 273 ms |
+| Web (althiaedu.com) | 🟢 funciona | 176 ms |
+| App: servidor de producción | 🟢 funciona | 116 ms |
+| App: pantalla de entrada | 🟢 funciona | 126 ms |
+| althia-edu.com (redirige) | 🟢 funciona | 221 ms |
+| Panel del dueño | 🟢 funciona | 347 ms |
+| Revisión programada del panel | 🟢 funciona | 249 ms |
+| Vigilante de cada minuto (Cloudflare) | 🟢 funciona | 278 ms |
 
 | Certificado | Vence | Estado |
 |---|---|---|
